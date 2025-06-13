@@ -2,7 +2,7 @@
 # scripts/bars_control.sh
 
 EWW=`which eww`
-CFG="$HOME/.config/eww"
+CFG="$HOME/.config/eww/eww_monitors/"
 
 ## Run eww daemon if not running already
 if [[ ! `pidof eww` ]]; then
@@ -15,15 +15,15 @@ case "$1" in
         # check the number of monitors
         monitor_count=$(hyprctl monitors -j | jq length)
         
-        ${eww} -c ~/.config/eww/eww_monitors open bar0
+        ${EWW} --config "$CFG" open bar0
         
         if [ $monitor_count -gt 1 ]; then
-            ${eww} -c -/.config/eww/eww_monitors open bar1
+            ${EWW} --config "$CFG" open bar1
         fi
         ;;
     "stop")
-        ${eww} close bar0 2>/dev/null || true
-        ${eww} close bar1 2>/dev/null || true
+        ${EWW} close bar0 2>/dev/null || true
+        ${EWW} close bar1 2>/dev/null || true
         # kill processes
         pkill -f "listen_workspaces.sh" 2>/dev/null || true
         ;;
@@ -33,8 +33,8 @@ case "$1" in
         $0 start
         ;;
     "status")
-        ${eww} active-windows | grep -q "bar0" && echo "  bar0: up" || echo "  bar0: down"
-        ${eww} active-windows | grep -q "bar1" && echo "  bar1: up" || echo "  bar1: down"
+        ${EWW} active-windows | grep -q "bar0" && echo "  bar0: up" || echo "  bar0: down"
+        ${EWW} active-windows | grep -q "bar1" && echo "  bar1: up" || echo "  bar1: down"
         ;;
     *)
         echo "use: $0 {start|stop|restart|status}"
