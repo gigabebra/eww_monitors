@@ -1,6 +1,10 @@
 # eww_monitors
 
-[[recording.mkv]]
+
+
+https://github.com/user-attachments/assets/90bb221d-92a2-4b15-ae96-31845f3d0a81
+
+
 
 this is my eww widget to see dynamic workspaces list on two monitors (as in waybar)
 # how to install
