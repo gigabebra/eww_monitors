@@ -1,0 +1,54 @@
+;; eww.yuck
+
+;; ** Scripts *************************************************
+
+(deflisten workspaces_monitor0 :initial "[]"
+  "scripts/listen_workspaces.sh 0")
+
+(deflisten workspaces_monitor1 :initial "[]"
+  "scripts/listen_workspaces.sh 1")
+
+;; ** Widgets *************************************************
+
+(defwidget workspaces [monitor]
+  (box :class "workspaces"
+       :orientation "h"
+       :space-evenly false
+       :halign "start"
+    (for workspace in {monitor == 0 ? workspaces_monitor0 : workspaces_monitor1}
+      (button :class "${workspace.active ? 
+                        (workspace.focused ? "workspace-active-focused" : "workspace-active-unfocused") 
+                        : "workspace-inactive"}"
+              :onclick "hyprctl dispatch workspace ${workspace.id}"
+        "${workspace.id}"))))
+
+(defwidget bar [monitor]
+  (centerbox :orientation "h"
+    (workspaces :monitor monitor)
+    (box)
+    (box)))
+
+;; ** Windows ************************************************
+
+(defwindow bar0
+  :monitor 0
+  :windowtype "dock"
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "100%"
+                      :height "30px"
+                      :anchor "top left")
+  :reserve (struts :side "top" :distance "30px")
+  (bar :monitor 0))
+
+(defwindow bar1
+  :monitor 1
+  :windowtype "dock"
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "100%"
+                      :height "30px"
+                      :anchor "top left")
+  :reserve (struts :side "top" :distance "30px")
+  (bar :monitor 1))
+

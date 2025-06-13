@@ -1,0 +1,60 @@
+
+/* eww.scss */
+* {
+    all: unset;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+}
+
+.workspaces {
+    background-color: rgba(30, 30, 46, 0.8);
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.workspace-active-focused {
+    background-color: #89b4fa;
+    color: #1e1e2e;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 2px;
+    font-weight: bold;    
+    transition: all 0.2s ease;
+}
+
+.workspace-active-focused:hover {
+  background-color: #74c7ec;
+}
+
+.workspace-active-unfocused {
+  background-color: #f38ba8;
+  color: #1e1e2e;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 2px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.workspace-active-unfocused:hover{
+  background-color: #eba0ac;
+}
+
+.workspace-inactive {
+    background-color: transparent;
+    color: #cdd6f4;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 2px;
+    transition: all 0.2s ease;
+}
+
+.workspace-inactive:hover {
+    background-color: rgba(137, 180, 250, 0.2);
+    color: #89b4fa;
+}
+
+window {
+    background: transparent;
+}
