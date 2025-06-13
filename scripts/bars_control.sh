@@ -15,10 +15,10 @@ case "$1" in
         # check the number of monitors
         monitor_count=$(hyprctl monitors -j | jq length)
         
-        ${eww} open bar0
+        ${eww} -c ~/.config/eww/eww_monitors open bar0
         
         if [ $monitor_count -gt 1 ]; then
-            ${eww} open bar1
+            ${eww} -c -/.config/eww/eww_monitors open bar1
         fi
         ;;
     "stop")
