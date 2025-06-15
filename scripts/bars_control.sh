@@ -22,8 +22,8 @@ case "$1" in
         fi
         ;;
     "stop")
-        ${EWW} close bar0 2>/dev/null || true
-        ${EWW} close bar1 2>/dev/null || true
+        ${EWW} --config "$CFG" close bar0 2>/dev/null || true
+        ${EWW} --config "$CFG" close bar1 2>/dev/null || true
         # kill processes
         pkill -f "listen_workspaces.sh" 2>/dev/null || true
         ;;
