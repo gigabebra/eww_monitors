@@ -33,8 +33,8 @@ case "$1" in
         $0 start
         ;;
     "status")
-        ${EWW} active-windows | grep -q "bar0" && echo "  bar0: up" || echo "  bar0: down"
-        ${EWW} active-windows | grep -q "bar1" && echo "  bar1: up" || echo "  bar1: down"
+        ${EWW} --config "$CFG" active-windows | grep -q "bar0" && echo "  bar0: up" || echo "  bar0: down"
+        ${EWW} --config "$CFG" active-windows | grep -q "bar1" && echo "  bar1: up" || echo "  bar1: down"
         ;;
     *)
         echo "use: $0 {start|stop|restart|status}"
